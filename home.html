@@ -92,6 +92,9 @@
         margin-top: 10px;
         transition: display 0.2s ease-out;
       }
+      .active, .gallery:hover {
+      background-color: #572170;
+      }
       .exploreButton {
         font-size: 50px;
         color: white;
@@ -139,11 +142,25 @@
         display: none;
         transition: max-height 0.2s ease-out;
       }
+      .active, .accordion:hover {
+      background-color: #d2d2d2;
+      }
+      .accordion:after {
+      content: '\02795'; /* Unicode character for "plus" sign (+) */
+      font-size: 23px;
+      color: #777;
+      float: right;
+      margin-left: 5px;
+    }
+
+    .active:after {
+      content: "\2796"; /* Unicode character for "minus" sign (-) */
+    }
       #galleryAccordion {
         margin-top: 16vh;
       }
       #galleryAccordionPanel {
-        display: block;
+      
       }
       .schedule {
         font-size: 45px;
@@ -195,46 +212,70 @@
       }
     </style>
   </head>
+  <!--
+    *****************************
+    This is where you will edit things
+    *****************************
+  -->
   <body>
     <div id='header'><img src='FWMSH_logo.png' style='object-fit: cover; width: 100%;'></div>
     <button class="accordion" id='galleryAccordion' onclick='toggleAccordion("galleryAccordionPanel")'>Galleries</button>
     <div class="accordionPanel" id='galleryAccordionPanel'>
+      <!--
+        ********************************
+        this is the gallery
+        ********************************
+      -->
       <div id='galleryList'>
         <button class='gallery' id='space' onclick='toggleDetails("spaceDetails")'>Launchpad</button>
         <div class='galleryDetails' id='spaceDetails'>
           <div id='spaceDetailText'>50 years ago, we landed on the Moon. Where will we be 50 years from now?<br></div>
           <button class='exploreButton' onclick='switchPage("space/space.html")'>Explore</button>
         </div>
-        <button class='gallery' id='history' onclick='toggleDetails("historyDetails")'>Beads</button>
+
+
+        <!-- <button class='gallery' id='history' onclick='toggleDetails("historyDetails")'>Beads</button>
         <div class='galleryDetails' id='historyDetails'>
           <div id='historyDetailText'>Uncover the hidden history of beads.<br></div>
           <button class='exploreButton' onclick='switchPage("beads/beads.html")'>Explore</button>
-        </div>
+        </div> -->
+
+
         <button class='gallery' id='project-planet' onclick='toggleDetails("ppDetails")'>Project Planet</button>
         <div class='galleryDetails' id='ppDetails'>
           <div id='ppDetailText'>Our world is changing. What will you do?<br></div>
           <button class='exploreButton' onclick='switchPage("project_planet/project_planet.html")'>Explore</button>
         </div>
+
+
         <button class='gallery' id='innovation' onclick='toggleDetails("wheelsDetails")'>Rolling Forward</button>
         <div class='galleryDetails' id='wheelsDetails'>
           <div id='wheelsDetailText'> What's your favorite thing with wheels?<br></div>
           <button class='exploreButton' onclick='switchPage("wheels/wheels.html")'>Explore</button>
         </div>
+
+
         <button class='gallery' id='energy' onclick='toggleDetails("energyDetails")'>Energy Blast</button>
         <div class='galleryDetails' id='energyDetails'>
           <div id='energyDetailText'>How do we create electricity here in Texas?<br></div>
           <button class='exploreButton' onclick='switchPage("energy/energy.html")'>Explore</button>
         </div>
+
+
         <button class='gallery' id='DinoDig' onclick='toggleDetails("DinoDigDetails")'>DinoDig®</button>
         <div class='galleryDetails' id='DinoDigDetails'>
           <div id='DinoDigDetailText'>What can you uncover at this ancient fossil site?<br></div>
           <button class='exploreButton' onclick='switchPage("DinoDig/DinoDig.html")'>Explore</button>
         </div>
+
+
         <button class='gallery' id='heritage' onclick='toggleDetails("heritageDetails")'>Changemakers</button>
         <div class='galleryDetails' id='heritageDetails'>
           <div id='heritageDetailText'>Discover pioneering women from Texas.<br></div>
           <button class='exploreButton' onclick='switchPage("heritage/heritage.html")'>Explore</button>
         </div>
+
+        
       </div>
     </div>
 
@@ -251,7 +292,12 @@
       <H5>Test your knowledge in our fun quiz!</H5>
       <button class='exploreButton' onclick='switchPage("scav_hunt/scav_hunt.html")'>Play the game</button>
     </div>
-
+    
+<!--
+  *************************************
+    End of editing section
+  *************************************
+-->
     <!-- <button id='mapAccordion' class="accordion" onclick='toggleAccordion("mapAccordionPanel")'>Map</button>
     <div class="accordionPanel" id='mapAccordionPanel'>
       <img src='map_en.jpg'></img>
@@ -327,7 +373,7 @@
 
     var touched = document.getElementById(id);
     var items = document.getElementsByClassName("accordionPanel");
-
+    
     if ($('#'+id).css('display') == 'none') {
       $("#"+id).css("display", "block").hide().animate({'height':'show'}, 200)
     } else $("#"+id).css("display", "none").show().animate({'height':'hide'}, 200)
@@ -338,6 +384,17 @@
         $("#"+items[i].id).css("display", "none").show().animate({'height':'hide'}, 200)
       }
     }
+    var accordians=document.getElementsByClassName("accordion");
+    for (i=0;i<accordians.length;i++){
+      if(accordians[i]!=touched.previousElementSibling){
+      accordians[i].classList.toggle("active",false);
+      }
+    }
+   
+
+    
+    touched.previousElementSibling.classList.toggle("active");
+    
     hideDetails();
   }
 

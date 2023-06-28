@@ -2,8 +2,10 @@
 # schedules and generates content.js, a javascript file with two dictionaries
 # for use with the web app
 
-import pandas as pd
 import sys
+
+import pandas as pd
+
 
 def load_file(csv):
 
@@ -86,6 +88,7 @@ if __name__ == "__main__":
         build_js(steam_events, theater_events)
 
 
+#df = pd.read_csv('./csv_files/username.csv')
 
 
 
