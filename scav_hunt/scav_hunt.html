@@ -206,7 +206,7 @@
     </div>
 
     <div id='bottomPane'>
-      <button id='homeButton' onclick='switchPage("../home.html")'>Go Home</button>
+      <button id='homeButton' onclick='switchPage("../newHome.html")'>Go Home</button>
       <button id='checkButton' onclick="checkAnswers()">Check Answers</button>
     </div>
 
@@ -219,7 +219,7 @@
   var lang = 'en';
   var mediaType = 'text';
   var fontSize = 45;
-
+  var progress =0;
   // Check for options passed from previous page
   var queryString = decodeURIComponent(window.location.search);
 
@@ -235,12 +235,16 @@
     $('H3').css({'fontSize': parseInt(fontSize) + 40});
     $('#contentPane').css({'fontSize': fontSize});
   }
+  if(searchParams.has('progress')){
+  progress=searchParams.get('progress');
+}
+    
 
   function switchPage(page) {
 
     // Function to switch pages while appending the user preferences
 
-    var link = page + '?lang='+lang+'&mediaType='+mediaType+'&fontSize='+fontSize;
+    var link = page + '?lang='+lang+'&mediaType='+mediaType+'&fontSize='+fontSize+'&progress='+progress;
 
     window.location.href = link;
   }

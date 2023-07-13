@@ -11,44 +11,50 @@ function buildQuiz() {
   createHeader('General');
   createMultiChoice('Of which state is <i>Paluxysaurus</i> the official dinosaur?', ['Oklahoma', 'New Mexico', 'Texas'], 'Texas');
   createMultiChoice('<i>Paluxysaurus jonesi</i> is a _______ , a class of dinosaur that eats plants, has a long neck and tail, a small head, and walks on all four legs.', ['Carnivore', 'Herbivore', 'Omnivore'], 'Herbivore');
-  //createMultiChoice('Something as small as a single tooth can help to identify a dinosaur as a herbivore or a _______.', ['Theropod', 'Carnivore', 'Ceratopsian'], 'Carnivore');
-  //createMultiChoice('A _______ is a scientist that studies plants and animals that lived millions of years ago. They study fossils to learn about organisms and the environment in which they lived and what the Earth was like for them.', ['Paleontologist', 'Geologist', 'Astronomer'], 'Paleontologist');
-  createMultiChoice('A painting called “A River Runs Through It” by local artist Cindi Holt is located outside of the Museum’s Oak Rooms East and West. What well-known Museum mascot is featured in the painting?', ['Museum Bear', 'Museum School Turtle', 'Museum Lizard'], 'Museum School Turtle');
-  createMultiChoice('Where can the Heritage Tree be found? This tree was left from the original Museum building on this site.  The tree was left undisturbed and the building that you stand in today was designed and constructed around it.', ['The Oak Room', 'Stars Café', 'The courtyard'], 'The courtyard');
-
-  createHeader('<i>Project Planet</i>');
-  createMultiChoice('When a polar bear and a gizzly bear meet, they can sometimes mate. What is this hybrid bear called?', ['Pizzly bear', 'Yellow bear', 'Grozzly bear'], 'Pizzly bear');
-  createMultiChoice("Which kind of energy creates pollution that contributes to climate change?", ['Coal', 'Solar', 'Nuclear'], 'Coal');
-  createMultiChoice("When a meteorologist gives a weather report, what color screen do they stand in front of?", ['Red', 'White', 'Green'], 'Green');
-
-
-  createHeader('<i>Beads: A Journey Across Cultures</i>');
-  createMultiChoice("What item from Ida Loving Turner is on display from the Chicago World's Fair?", ['Her gown', 'Her shoes', 'Her hat'], 'Her gown');
-  createMultiChoice('In the <i>Beads</i> exhibit, what egg, from the world’s largest bird, is used in the design of a necklace?', ['Penguin', 'Ostrich', 'Pterodactyl'], 'Ostrich');
-
-  createHeader('<i>Natural Communities</i>');
-  createMultiChoice('What is the State Bird of Texas?', ['Bluebird', 'Mockingbird', 'Hummingbird'], 'Mockingbird');
-  createMultiChoice("Texas has two state animals, a small one and a large one. What's the smaller one?", ['Armadillo', 'Opossum', 'Racoon'], 'Armadillo');
-  createMultiChoice('What is the Texas State Reptile??', ['Bearded Dragon', 'Horned Frog', 'Alligator'], 'Horned Frog');
-
-  createHeader('<i>Launchpad</i>');
-  createMultiChoice("By using infrared light, astronomers can study an object's _______.", ['Temperature', 'Weight', 'Age'], 'Temperature');
-  createMultiChoice("On which space station did astronauts use a bike like the one on display in <i>Launchpad</i>?", ['International Space Station', 'Space Shuttle', 'Skylab'], 'Skylab');
-  createMultiChoice("If you weigh 100 lbs on Earth, how much will you weigh on the Moon?", ['Less', 'About the same', 'More'], 'Less');
-
-  createHeader('<i>Rolling Forward</i>');
-  createMultiChoice("The Ford Model T is generally considered to be the first _______ car.", ['Electric', 'Affordable', 'Fast'], 'Affordable');
-  createMultiChoice("Which source of energy powers a Soap Box Derby car?", ['Gravity', 'Electricity', 'Gasoline'], 'Gravity');
-
-  createHeader('V-DROME');
-  createMultiChoice("Which of your senses is V-DROME <i>not</i> designed to engage?", ['Smell', 'Sight', 'Sound', 'Taste'], 'Taste');
-  createMultiChoice("V-DROME will be located _______.", ['Next to the Omni', 'Where the Omni is now', 'Next to the Noble Planetarium'], 'Next to the Omni');
-
+  createMultiChoice('A painting called "A River Runs Through It" by local artist Cindi Holt is located outside of the Museum'+"'"+'s Oak Rooms East and West. What well-known Museum mascot is featured in the painting?', ['Museum Bear', 'Museum School Turtle', 'Museum Lizard'], 'Museum School Turtle');
+  createMultiChoice('Where can the Heritage Tree be found? This tree was left from the original Museum building on this site.  The tree was left undisturbed and the building that you stand in today was designed and constructed around it.', ['The Oak Room', 'Stars Cafe', 'The courtyard'], 'The courtyard');
+ 
   createHeader('Energy Blast');
   createMultiChoice("Which technology generates the most electricity in Texas?", ['Nuclear', 'Wind', 'Natural Gas', 'Solar'], 'Natural Gas');
   createMultiChoice("Which of these energy sources does not provide steady, consistent power?", ['Coal', 'Wind', 'Nuclear'], 'Wind');
   createMultiChoice("Which of these energy sources is not considered renewable energy?", ['Solar', 'Wind', 'Nuclear', "Hydroelectric"], 'Nuclear');
 
+  createHeader('<i>Dino Labs</i>');
+  createMultiChoice('What is the name of bone #12?', ['Dorsal Vertebrae', 'Sacral Vertebrae', 'Cervical Vertebrae','Caudal Vertebrae'], 'Dorsal Vertebrae');
+  createMultiChoice("What was the top predatory dinosaur during the late Jurassic Period??", ['Tyrannosaurus Rex', 'Allosaurus', 'Triceratops', 'Velociraptor'], 'Allosaurus');
+
+  createHeader('<i>Plains Cultures Gallery</i>');
+  createMultiChoice("10. How many acres is the Great Plains?", ['10,000 acres', '12 million acres', '500,000 acres','180 million acres'], '180 million acres');
+  createMultiChoice('Which Native American tribe resided in DFW area?', ['Wichita', 'Comanche', 'Caddo','Jumano'], 'Wichita');
+
+  createHeader('<i>The Unexpected City</i>');
+  createMultiChoice('What year was Jimmy Stewart named an honorary Texan?', ['1945', '1972', '1956','2001'], '1956');
+  createMultiChoice("What animal is Jimmy Stewart feeding/petting?", ['Cow', 'Rhino', 'Horse'], 'Rhino');
+
+  createHeader('<i>Cattle Raisers Museum</i>');
+  createMultiChoice("When did Texas officially become a US state?", ['1824', '1935', '1845','1900'], '1845');
+  createMultiChoice("How many saddles are on display?", ['6', '8', '10'], '10');
+ 
+
+  createHeader('<i>9/11 Tribute</i>');
+  createMultiChoice("How much does the artifact weigh?", ['2 tons', '1,000 lbs', '10,000 lbs', '4 tons'], '4 tons');
+
+  createHeader('Planetarium Gallery');
+  createMultiChoice("What club did Charlie Mary Noble organize?", ['The Space Kids Club', 'Stars and Planets Club', 'Junior Astronomer'+"'"+'s Club', 'Galaxy Club'], 'Junior Astronomer'+"'"+'s Club');
+  createMultiChoice("18. How many tons of space debris hits earth every day?", ['5 tons', '100 tons', '1 ton','500 tons'], '100 tons');
+  createMultiChoice("What is "+'"'+"Mr. Meteorite's"+'"'+" real name?",['Oscar Monnig','Isaac Moon','Oliver James','Caeser Meteor'],'Oscar Monnig');
+ 
+ createHeader('<i>The Charlie Brown Exhibit</i>');
+ ("What was Charlie Schulz's nickname?",['Shorty','Snoopy','Sparky','Speedy','(it is after August 20, 2023)'],['Sparky','(it is after August 20, 2023)']);
+ ("How many Christmas trees are on display?",['5','3','6','12','(it is after August 20, 2023)'],['5','(it is after August 20, 2023)']);
+
+createHeader('<i>Innovation Studios</i>')
+ ("What object do you put into the air tube?",['Confetti','Paper cups','Candy','Paper plates'],'Paper cups');
+ ("What activities are there to do in the Innovation Studios?",['Drawing','Dino biome','Slide','Tornado replicator','Bed of nails','Pool','Bubble machine'],['Drawing','Dino biome','Tornado replicator','Bed of nails']);
+  //template
+  // createMultiChoice("",['','','',''],'');
+
+ 
   createPaddingBlock();
 
 

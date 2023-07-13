@@ -243,11 +243,11 @@
           ****************************
         -->
       <h2>Welcome!</h2> This app will be your companion during your Museum visit. It can provide you with extra info about the objects you'll see today.
-      <p> Would you prefer to read or listen?
+      <p> Press continue to set preferences
     </div>
     <div id='mediaToggles' class='toggles'>
-      <button id='textToggle' class='toggleOff' onclick="toggleMedia('text')">Read</button>
-      <button id='audioToggle' class='toggleOff' onclick="toggleMedia('audio')">Listen</button>
+      <button id='textToggle' class='toggleOff' onclick="toggleMedia('text')">Continue</button>
+      <!--><button id='audioToggle' class='toggleOff' onclick="toggleMedia('audio')">Listen</button><!-->
     </div>
     <div id='textSizeLabel' class='text' style='margin-top: 75px;'>
       Choose your text size:
@@ -292,6 +292,7 @@
   var lang = 'en';
   var mediaType = 'text';
   var fontSize = 45;
+  var progress = 0;
 
   // Check for options passed from previous page
   var queryString = decodeURIComponent(window.location.search);
@@ -308,6 +309,9 @@
   }
   if (searchParams.has('fontSize')) {
     fontSize = searchParams.get('fontSize');
+  }
+  if(searchParams.has('progress')){
+    progress=searchParams.get('progress');
   }
 
   function toggleMedia(type) {
@@ -412,10 +416,10 @@
       page = passed_page + "/" + passed_page + ".html";
     }
     else {
-      page = "home.html";
+      page = "newHome.html";
     }
 
-    var link = page + '?lang='+lang+'&mediaType='+mediaType+'&fontSize='+fontSize;
+    var link = page + '?lang='+lang+'&mediaType='+mediaType+'&fontSize='+fontSize+'&progress='+progress;
 
     window.location.href = link;
   }

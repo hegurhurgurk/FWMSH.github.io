@@ -1,0 +1,396 @@
+<!DOCTYPE html/css/javascript>
+<html>
+  <head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169285999-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-169285999-1');
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Explore the Museum</title>
+
+    <style>
+
+        @font-face {
+        font-family: Gotham-Bold;
+        src: url(Gotham-Bold.otf);
+        }
+        @font-face {
+          font-family: Gotham-Book;
+          src: url(Gotham-Book.otf);
+        }
+        body {
+        background-color: #003066;
+        margin: 0%;
+         }
+         #header {
+        display: flex;
+        justify-content: center;
+        height: 15%;
+        top: 0px;
+        background-color: #003066;
+      }
+      #gallery{
+        display: flex;
+        justify-content:center;
+        height: 60%;
+        width:100%;
+        background-color:#572170;
+        border: 0;
+        margin: 0%;
+        overflow: scroll;
+        -ms-overflow-style: none;  
+        scrollbar-width: none; 
+
+      }
+      #gallery::-webkit-scrollbar {
+  display: none;
+}
+      .galleryColumn{
+        flex:50%;
+        padding: 0 4px;
+        
+      }
+      #left{
+
+        margin-right: 2px;
+        width: 100%;
+      }
+      #right{
+
+        margin-left: 2px;
+        width: 100%;
+      }
+      .centered{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Gotham-Bold;
+        font-size: 50px;
+      }
+      .galleryImg{
+       width:100%;
+       height: 100%;
+        object-fit:fill;
+        filter: blur(2px);
+      }
+      .container{
+        position:relative;
+        width: 100%;
+        height: 50%;
+        padding-bottom: 10px;
+        
+      }
+      .modal {
+        display: none; /* Hidden by default */
+        position: fixed; /* Stay in place */
+        z-index: 1; /* Sit on top */
+        /* Location of the box */
+        left: 0;
+        top: 0;
+        width: 100%; /* Full width */
+        height: 100%; /* Full height */
+        overflow: auto; /* Enable scroll if needed */
+
+        opacity: 1;
+        }
+        .modalImg{
+            filter: blur(5px);
+       width:100%;
+       height: 100%;
+        object-fit:fill;
+      
+        }
+        .positioning{
+            position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-family: Gotham-Book;
+        font-size: 35pt;
+        color: white;
+      }
+      .modalTitle{
+        position: absolute;
+        top: 8px;
+        left: 50%;
+        width: auto;
+        transform: translate(-50%, 0%);
+        font-family: Gotham-Bold;
+        font-size: 35pt;
+        color: white;
+      }
+      .modalButton{
+        position: absolute;
+        left: 50%;
+        bottom:8px;
+        transform: translate(-50%, -50%);
+        font-family: Gotham-Bold;
+        font-size: 35pt;
+      }
+      .tint{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background-color: #003066;
+        width: 100%;
+        height: 100%;
+        opacity: .3;
+      }
+      .modal {  
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {transform: scale(0.1)} 
+  to {transform: scale(1)}
+}
+.close{
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+  opacity: 1;
+}
+.map{
+  display: flex;
+  justify-content:center;
+  width: 100%;
+  height: 7%;
+  background-color: #ffd204;
+  padding: 20px;
+  border: 0px;
+  font-family: Gotham-Book;
+  text-align: center;
+  font-size: 20pt;
+ 
+}
+.schedule{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 7%;
+  background-color: #dc0963;
+  padding: 20px;
+  border: 0px;
+  font-family: Gotham-Book;
+  text-align: center;
+  font-size: 20pt;
+  
+}
+.quiz{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 11%;
+  background-color: #572170;
+  padding: 40px;
+  border: 0px;
+  font-family: Gotham-Book;
+  text-align: center;
+  font-size: 20pt;
+}
+.modal-content{
+  opacity: 1;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 55px;
+  left: 0px;
+}
+#mapDisplay{
+  background-color: rgba(0,0,0,.9);
+}
+#scheduleDisplay{
+  background-color: rgba(111, 42, 142, 1);
+}
+h1{
+  font-family: Gotham-Bold;
+  color: #f1f1f1;
+  padding: 0 9px;
+}
+h4{
+  font-family: Gotham-Bold;
+  color: #f1f1f1;
+  padding: 0 18px;
+}
+p{
+  font-family: Gotham-Book;
+  color: #f1f1f1;
+  padding: 0 36px;
+}
+#alertDisplay{
+  background-color: rgba(0,0,0,.9);
+}
+#alertText{
+  color: white;
+}
+        
+
+    </style>
+  </head>
+  <body>
+    <div id='header'><img src='FWMSH_logo.png' style='object-fit:cover; height: 100%;'></div>
+    <div id="gallery">
+        <div id="left" class="galleryColumn"></div>
+        <div id="right" class="galleryColumn"></div>
+    </div>
+    <button class="map" id="map" onclick="displayMap()">Map</button>
+    <button class="schedule" id="schedule" onclick="displaySchedule()">Schedule</button>
+    <button class="quiz" id="quiz" onclick="quizLink()">Scavenger Hunt</button>
+    <div id="mapDisplay" class="modal">
+      <span class="close" onclick="closeMap()">&times;</span>
+      <img class="modal-content" src="map_en.jpg">
+    </div>
+    <div id="scheduleDisplay" class="modal">
+      <span class="close" onclick="closeSchedule()">&times;</span>
+      <h1>Schedule for the Noble Planetarium</h1>
+      <h4>Tuesday-Friday</h4>
+      <p>11 AM | Reserved for Schools + Camps<br>
+        12 PM | Live at the Noble: Our Solar System <br>
+        1 PM | Reserved for Schools + Camps<br>
+        2 PM | Live at the Noble: Texas Sky Tonight <br>
+        3 PM | Live at the Noble: Our Solar System <br>
+        4 PM | 5,000 Eyes: Mapping the Universe with DESI</p>
+        <h4>Saturday</h4>
+        <p>11 AM | Live at the Noble: Texas Sky Tonight<br>
+          11:45 AM | 5,000 Eyes: Mapping the Universe with DESI<br>
+          12:30 PM | Live at the Noble: Our Solar System<br>
+          1:15 PM | Live at the Noble: Texas Sky Tonight<br>
+          2 PM | 5,000 Eyes: Mapping the Universe with DESI<br>
+          2:45 PM | Live at the Noble: Our Solar System<br>
+          3:30 PM | Live at the Noble: Texas Sky Tonight<br>
+          4:15 PM | 5,000 Eyes: Mapping the Universe with DESI</p>
+          <h4>Sunday</h4>
+          <p>12:30 PM | Live at the Noble: Our Solar System<br>
+            1:15 PM | Live at the Noble: Texas Sky Tonight<br>
+            2 PM | 5,000 Eyes: Mapping the Universe with DESI<br>
+            2:45 PM | Live at the Noble: Our Solar System<br>
+            3:30 PM | Live at the Noble: Texas Sky Tonight<br>
+            4:15 PM | 5,000 Eyes: Mapping the Universe with DESI</p>
+    </div>
+    <div id="alertDisplay" class="modal">
+      <span class="close" onclick="closeAlert()">&times;</span>
+      <divc id="alertText" class="centered">You need to explore all of the exhibits before trying the quiz.</div>
+    </div>
+
+  </body>
+  <script type="text/javascript" src="contentContainer.js"></script>
+  <script type="text/javascript" src="bulidGallery.js"></script>
+  <script>
+    for(i=1;i<=Object.keys(title_list).length;i++){
+    var html=buildGal(i,title_list[i],img_list[i]);
+    var modal=buildModal(i,title_list[i],img_list[i],desc_list[i],link_list[i]);
+    
+    if(dates[i]==''){
+    if(i%2==0){
+        document.getElementById("right").innerHTML+=html;
+    }
+    else{
+        document.getElementById("left").innerHTML+=html;
+    }
+    var add=document.createElement("div");
+    add.innerHTML=modal;
+    document.body.appendChild(add);
+    
+    }
+    else{
+      var time = new Date(dates[i]);
+      var today_day=new Date();
+      today_day.getDate
+      if(Date.parse(time)-Date.parse(today_day)>0){
+        if(i%2==0){
+        document.getElementById("right").innerHTML+=html;
+      }
+      else{
+          document.getElementById("left").innerHTML+=html;
+      }
+    var add=document.createElement("div");
+    add.innerHTML=modal;
+    document.body.appendChild(add);
+    
+      }
+      
+      
+    }
+  }
+  var lang = 'en';
+  var mediaType = 'text';
+  var fontSize = 45;
+  var progress =0;
+  var queryString = decodeURIComponent(window.location.search);
+
+var searchParams = new URLSearchParams(queryString);
+if(searchParams.has('skipAudioCheck')) {
+  dismissPopup();
+}
+if(searchParams.has('lang')) {
+  lang = searchParams.get('lang');
+}
+if(searchParams.has('mediaType')) {
+  mediaType = searchParams.get('mediaType');
+}
+if (searchParams.has('fontSize')) {
+  fontSize = searchParams.get('fontSize');
+}
+if(searchParams.has('progress')){
+  progress=searchParams.get('progress');
+}
+    function switchPage(page) {
+
+// Function to switch pages while appending the user preferences
+
+var link = page + '?lang='+lang+'&mediaType='+mediaType+'&fontSize='+fontSize+'&progress='+progress;
+
+window.location.href = link;
+}
+
+  function displayMap(){
+    document.getElementById("mapDisplay").style.display="block";
+  }
+  function closeMap(){
+    document.getElementById("mapDisplay").style.display="none";
+  }
+  function displaySchedule(){
+    document.getElementById("scheduleDisplay").style.display="block";
+  }
+  function closeSchedule(){
+    document.getElementById("scheduleDisplay").style.display="none";
+  }
+  function displayAlert(){
+    document.getElementById("alertDisplay").style.display="block";
+  }
+  function closeAlert(){
+    document.getElementById("alertDisplay").style.display="none";
+  }
+  $(window).resize(function() {
+    var screenAspect = $(this).width()/$(this).height();
+    var overlay = document.getElementById('rotationWarning');
+
+    if (screenAspect > 1) {
+      overlay.style.display = 'block';
+    } else {
+      overlay.style.display = 'none';
+    }
+  });
+ function quizLink(){
+  if(progress>=Object.keys(title_list).length){
+    switchPage("scav_hunt/scav_hunt.html");
+  }
+  else{
+    displayAlert();
+  }
+
+ }
+ </script>
+
+</html>
